@@ -51,7 +51,14 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 alert alert-info">
+                        адресс поинтов: http://domain.com/test[0-9]+ (например <a href="{{ route('test', '1') }}" >{{ route('test', '1') }}</a> )
+                    </div>
+                </div>
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>

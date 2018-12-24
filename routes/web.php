@@ -11,12 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'StatisticController@listPoint');
 
 
-Route::get("/test{index}", 'TestController@test')->where('index', '[0-9]+');
+Route::get("/test{index}", 'TestController@test')->where('index', '[0-9]+')->name('test');
 Route::get("/list-points", 'StatisticController@listPoint')->name('list.point');
 Route::get("/list-ip", 'StatisticController@listIP')->name('list.ip');
 
