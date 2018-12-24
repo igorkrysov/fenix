@@ -16,6 +16,12 @@ Route::get('/', function () {
 });
 
 
-Route::get("/test{index}", function($index) {
-    return view('test', ['index' => $index]);
-})->where('index', '[0-9]+');
+Route::get("/test{index}", 'TestController@test')->where('index', '[0-9]+');
+Route::get("/list-points", 'StatisticController@listPoint')->name('list.point');
+Route::get("/list-ip", 'StatisticController@listIP')->name('list.ip');
+
+Route::get("/point-info/{index}", 'StatisticController@pointInfo')->name('info.point');
+Route::get("/ip-info/{ip}", 'StatisticController@IPInfo')->name('info.ip');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
