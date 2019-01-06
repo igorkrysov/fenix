@@ -6,6 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('meta-tags')
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -61,5 +62,6 @@
             </div>
         </main>
     </div>
+    @stack('scripts')
 </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Log;
+use Storage;
 
 class StatisticController extends Controller
 {
@@ -29,4 +30,19 @@ class StatisticController extends Controller
         return view('statistic.statistic-point', ['ip' => $ip, 'index' => $index]);
     }
     
+    public function addStatistic(Request $request) {
+        $request->validate([
+            'index' => 'required|integer'
+        ]);
+        $ip = $request->ip();
+        $index =  $request->index;
+        $date = date('Y-m-d H:i:s');
+        Log::writeLog($ip, $index, $date);
+
+        if ($request->json()) {
+            return response()->json(['status' => true]);
+        }
+
+        return redirect()->back();
+    }
 }

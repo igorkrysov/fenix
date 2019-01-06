@@ -25,7 +25,6 @@ class Log extends Model
                 $values = explode(';', $line);
                 $arr[] = ['ip' => $values[0], 'index' => $values[1], 'date' => $values[2]];
             }
-            var_dump($arr);
             self::insert($arr);
         }
         
